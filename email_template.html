@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sample Email</title>
+    <title>Invoice</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,28 +11,12 @@
         }
         .container {
             width: 100%;
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
             background-color: #ffffff;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             position: relative;
-        }
-        .header {
-            background-color: #007bff;
-            color: #ffffff;
-            padding: 10px 0;
-            text-align: center;
-        }
-        .content {
-            padding: 20px;
-            line-height: 1.6;
-        }
-        .footer {
-            text-align: center;
-            padding: 10px 0;
-            background-color: #007bff;
-            color: #ffffff;
         }
         .company-info {
             position: absolute;
@@ -42,6 +26,46 @@
             padding: 10px;
             border: 1px solid #ccc;
             font-size: 12px;
+        }
+        .company-logo {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #007bff;
+            color: #ffffff;
+        }
+        .invoice-info {
+            margin: 40px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        .invoice-details {
+            width: 45%;
+        }
+        .content {
+            padding: 20px;
+            line-height: 1.6;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #dddddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #007bff;
+            color: #ffffff;
         }
     </style>
 </head>
@@ -54,15 +78,62 @@
             <p>Company City</p>
             <p>Company Country</p>
         </div>
+        <div class="company-logo">
+            <img src="https://your-image-url.com/logo.png" alt="Company Logo" style="width: 150px;">
+        </div>
         <div class="header">
-            <img src="https://yourdomain.com/logo.png" alt="Company Logo" style="width: 150px;">
-            <h1>Welcome to Our Service</h1>
+            <h1>Invoice</h1>
+        </div>
+        <div class="invoice-info">
+            <div class="invoice-details">
+                <p><strong>Invoice Number:</strong> {{invoice_number}}</p>
+                <p><strong>Invoice Date:</strong> {{invoice_date}}</p>
+                <p><strong>Due Date:</strong> {{due_date}}</p>
+            </div>
+            <div class="customer-details">
+                <p><strong>Bill To:</strong></p>
+                <p>{{customer_name}}</p>
+                <p>{{customer_address}}</p>
+                <p>{{customer_city}}, {{customer_zip}}</p>
+                <p>{{customer_country}}</p>
+            </div>
         </div>
         <div class="content">
-            <p>Dear {{customer_name}},</p>
-            <p>Thank you for signing up for our service. We are excited to have you on board. Your registration number is {{registration_number}}.</p>
-            <p>For more information, visit our <a href="https://yourdomain.com/resources">resources page</a> or contact us at <a href="mailto:support@yourdomain.com">support@yourdomain.com</a>.</p>
-            <p>Best regards,<br>The {{company_name}} Team</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Repeat this TR block for each item -->
+                    <tr>
+                        <td>{{item_description}}</td>
+                        <td>{{item_quantity}}</td>
+                        <td>{{item_unit_price}}</td>
+                        <td>{{item_total}}</td>
+                    </tr>
+                    <!-- End of item block -->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" style="text-align: right;"><strong>Subtotal</strong></td>
+                        <td>{{subtotal}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align: right;"><strong>Tax</strong></td>
+                        <td>{{tax}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align: right;"><strong>Total</strong></td>
+                        <td>{{total}}</td>
+                    </tr>
+                </tfoot>
+            </table>
+            <p>If you have any questions about this invoice, please contact us at <a href="mailto:support@yourdomain.com">support@yourdomain.com</a>.</p>
         </div>
         <div class="footer">
             <p>&copy; 2024 {{company_name}}, Inc. All rights reserved.</p>
