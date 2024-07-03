@@ -38,15 +38,22 @@
 <body>
     <div class="container">
         <div class="header">
+            <img src="https://yourdomain.com/logo.png" alt="Company Logo" style="width: 150px;">
             <h1>Welcome to Our Service</h1>
         </div>
         <div class="content">
-            <p>Dear Customer,</p>
-            <p>Thank you for signing up for our service. We are excited to have you on board.</p>
-            <p>Best regards,<br>The Team</p>
+            <p>Dear {{customer_name}},</p>
+            <p>Thank you for signing up for our service. We are excited to have you on board. Your registration number is {{registration_number}}.</p>
+            <p>For more information, visit our <a href="https://yourdomain.com/resources">resources page</a> or contact us at <a href="mailto:support@yourdomain.com">support@yourdomain.com</a>.</p>
+            <p>Best regards,<br>The {{company_name}} Team</p>
         </div>
         <div class="footer">
-            <p>&copy; 2024 Our Service, Inc. All rights reserved.</p>
+            <p>&copy; 2024 {{company_name}}, Inc. All rights reserved.</p>
+            <p>
+                <a href="https://facebook.com/yourcompany">Facebook</a> |
+                <a href="https://twitter.com/yourcompany">Twitter</a> |
+                <a href="https://instagram.com/yourcompany">Instagram</a>
+            </p>
         </div>
     </div>
 </body>
